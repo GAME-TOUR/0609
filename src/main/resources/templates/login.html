@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(20, 24, 28);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgb(30, 38, 45);
+            padding: 15px; /* 패딩 감소 */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 360px; /* 컨테이너 폭 감소 */
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 15px; /* 간격 감소 */
+            color: white;
+        }
+        form div {
+            margin-bottom: 10px; /* 간격 감소 */
+        }
+        label {
+            display: block;
+            margin-bottom: 2px; /* 간격 감소 */
+            text-align: left;
+            font-size: 14px; /* 폰트 사이즈 감소 */
+            color: white;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px); /* 전체 폭에서 20px 빼기 */
+            padding: 8px; /* 패딩 감소 */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px; /* 폰트 사이즈 감소 */
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px; /* 간격 감소 */
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .social-login {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px; /* 간격 감소 */
+        }
+        .social-login a {
+            width: 80px; /* 아이콘 크기 감소 */
+            height: 80px; /* 아이콘 크기 감소 */
+            margin: 3px; /* 간격 감소 */
+            padding: 8px; /* 패딩 감소 */
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .social-login img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="/main" style="text-decoration: none; color: inherit;">
+        <h1>GameTour</h1>
+    </a>
+    <form id="loginForm" method="POST" action="/login">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <div class="social-login">
+        <a href="/oauth2/authorization/google" class="google">
+            <img src="http://localhost:8080/icon/web_light_sq_na@1x.png" alt="구글 로그인">
+        </a>
+        <a href="/oauth2/authorization/naver" class="naver">
+            <img src="http://localhost:8080/icon/naver_icon.png" alt="네이버 로그인">
+        </a>
+        <a href="/oauth2/authorization/kakao" class="kakao">
+            <img src="http://localhost:8080/icon/kakao_icon.png" alt="카카오 로그인">
+        </a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+/* SearchResults.css */
+.search-results-page {
+    max-width: 1024px;
+    
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    
+    /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+    border-radius: 8px;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 1.8em; /* 제목 크기 조정 */
+    color: white;
+    padding-bottom: 0.5%;
+    margin-bottom: 17px;
+    border-bottom: 1px solid #2c3440;
+}
+
+h5 {
+    color: white;
+    margin-top: 0;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column; /* 세로 나열을 위해 column으로 변경 */
+    gap: 20px;
+}
+
+.search-result-item {
+    /* background: white; */
+    border-bottom: 1px solid #2c3440;
+    /* border-radius: 5px; */
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+    display: flex; /* 아이템을 가로로 정렬 */
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+}
+
+.search-result-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-result-image {
+    max-height: 100px;
+    width: 66.66px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.search-result-title {
+    font-size: 1.2em;
+    color: white;
+    text-align: left;
+    flex-grow: 1;
+}

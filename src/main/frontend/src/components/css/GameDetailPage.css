@@ -1,0 +1,132 @@
+/* Updated CSS for GameDetailPage */
+.App {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    white-space: pre-line;
+}
+
+h1 {
+    font-size: 32px;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 2%;
+    border-bottom: 1px solid white;
+}
+
+h4 {
+    font-size: 17px;
+    margin-top: 0;
+}
+
+p {
+    font-size: 16px;
+    color: white;
+}   
+.game-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.game-detail {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.first-row, .second-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.game-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-banner img {
+    max-height: 300px;
+    width: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.purchase-options a {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.purchase-options a:hover {
+    background-color: #0056b3;
+}
+
+.game-info {
+    padding: 0 15px;
+    color: #99AABB;
+}
+
+.game-rating {
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 5px;
+    height: fit-content;
+}
+
+.rating-bar {
+    background: #4a90e2;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.rating-bar:hover {
+    background: #2171b5;
+}
+
+.review-area {
+    display: flex;
+}
+
+.existing-review {
+    flex: 1;
+    display: table-column;
+    margin: 0px 0px 0px 10px;
+}
+
+.star-ratings {
+    align-self: center;
+    white-space: pre;
+    width: fit-content;
+}
+
+.review-ar {
+    display: flex;
+}
+
+.fix-text {
+    width: -webkit-fill-available;
+    height: 100px;
+    background-color: #181a1b;
+    border-color: #2b2b2b;
+    border-radius: 5px;
+}
+
+.my-riv-btn button {
+    height: 50px;
+    border: none;
+    border-radius: 0%;
+    background-color: #14181c;
+    color: #5CBCE3;
+    &:hover {
+        color: #C2E7FF;
+    }
+}

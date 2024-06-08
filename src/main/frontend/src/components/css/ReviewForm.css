@@ -1,0 +1,247 @@
+.review-form {
+
+    padding: 20px;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+button {
+    float: none;                                                                        
+    /* margin-bottom: 50px;
+    margin: 20px; */
+}
+
+.review-controls {
+    padding-left: 20px;
+    align-self: center;
+    display: inline-grid;
+}
+
+
+.review-textarea {
+    width: 100%;
+    height: 120px;
+    /* padding: 10px; */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    font-size: 16px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.review-textarea:focus {
+    border-color: #0056b3;
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.Toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: rgba(0,0,0,0.75);
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.Toast.success {
+    background-color: #4CAF50;
+}
+
+.Toast.error {
+    background-color: #f44336;
+}
+
+.login-message {
+    color: red;
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.review-item {
+    display: grid;
+    background-color: #2b2b2b;
+    height: auto;
+    /* border: none; */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    /* padding-top: 20px; */
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.review-item h3 {
+    color: #0056b3;
+    font-weight: bold;
+}
+
+.review-item h3:hover {
+    text-decoration: underline;
+}
+
+.review-item p {
+    
+    color: white;
+    font-size: 15px;
+    margin: 5px;
+    height: 120px;
+    padding-left: 7px;
+}
+
+.rating-text {
+    font-size: 14px;
+    color: #888;
+    padding: 2px 5px;
+    display: inline-block;
+    background-color: #eef;
+    border-radius: 5px;
+}
+
+.StarRatings {
+    margin-bottom: 15px;
+}
+
+.StarRatings svg {
+    fill: #ffd700;
+}
+
+.StarRatings svg:hover {
+    fill: #ffac33;
+}
+
+.review-info {
+    width: 98%;
+    justify-self: center;
+    background-color: #2b2b2b;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    
+    border-bottom: 1px solid #848e93;
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+    padding: 7px 1px 7px 1px;
+    margin-bottom: 10px;
+}
+
+.left { display: flex;}
+.right {display: flex;}
+
+.review-date {
+    justify-content: flex-end;
+}
+
+.review-userid{
+    padding: 0px 5px 0px 5px;
+    display: flex;
+    color: #5CB4E3;
+    cursor: pointer;
+    &:hover { color: #C2E7FF; }
+}
+.review-modify {
+    font-size: 18px;
+    padding: 0px 5px 0px 5px;
+    display: flex;
+    color: #5CB4E3;
+    cursor: pointer;
+    &:hover { color: #C2E7FF; }
+}
+
+
+.review-util {
+    display: flex;
+    height: 45px;
+    color: white;
+    font-size: 15px;
+    margin: 0px 5px 0px 5px;
+    padding-left: 14px;
+    border-top: 1px solid gray;
+    align-items: center;
+}
+
+.like {
+    color: #5CB4E3;
+    cursor: pointer;
+    &:hover { color: #C2E7FF; }
+}
+
+.review-form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.review-form-popup {
+    background: #2b2b2b;
+    padding: 20px;
+    border-radius: 10px;
+    
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    &:hover{
+        border-radius: 50%;
+    }
+}
+
+.write-review-btn {
+    background-color: #14181c;
+    width: auto;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.write-review-btn:hover {
+    background-color: #3b3b3b;
+}
