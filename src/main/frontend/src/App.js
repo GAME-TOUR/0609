@@ -8,6 +8,7 @@ import Test from './components/test/Test';
 import GameDetailPage from './components/GameDetailPage';
 import SignupForm from "./components/SignupForm";
 import SearchResults from "./components/SearchResults";
+import UserReviews from './components/UserReviews';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path='/game/:gameId' element={<GameDetailPage />}></Route>
               <Route path={'/signup'} element={<SignupForm />}></Route>
               <Route path="/search" element={<SearchResults />} />
+              <Route path="/user-reviews/:userId" element={<UserReviews />} />
             </Routes>
           </AuthProvider>
         </BrowserRouter>

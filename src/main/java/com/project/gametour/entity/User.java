@@ -27,8 +27,8 @@ public class User {
     private String role;
     private LocalDateTime createDate;
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-//    private List<Review> reviewList;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Review> reviewList;
 
     private String providerId;
     private String provider;
@@ -38,6 +38,4 @@ public class User {
             this.name = user.getName();
         }
     }
-
-
 }

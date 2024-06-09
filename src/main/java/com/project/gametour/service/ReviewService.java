@@ -57,4 +57,8 @@ public class ReviewService {
         this.reviewRepository.delete(curReview);
     }
 
+    public List<Review> findByUserId(Long userId) {
+        return reviewRepository.findByUserId(userId);
+    }
+
 }

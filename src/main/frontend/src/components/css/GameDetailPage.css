@@ -6,6 +6,7 @@
     width: 100%;
     font-family: 'Arial', sans-serif;
     white-space: pre-line;
+    color: white;
 }
 
 h1 {
@@ -100,6 +101,9 @@ p {
     flex: 1;
     display: table-column;
     margin: 0px 0px 0px 10px;
+}
+.existing-review span {
+    color: white;
 }
 
 .star-ratings {

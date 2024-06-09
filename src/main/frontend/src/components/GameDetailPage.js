@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import $ from 'jquery';
 import { AuthContext } from '../contexts/AuthContext';
 import NavBar from './NavBar';
 import StarRatings from 'react-star-ratings';
@@ -10,6 +9,7 @@ import './css/ReviewForm.css';
 import likeicon from './test_image/like.svg';
 import commenticon from './test_image/comment.svg';
 import RatingBarChart from './RatingBarChart';
+import ReviewComponent from './ReviewComponent';
 
 function ReviewForm({ gameId, isLoggedIn, fetchReviews, closeForm, rating }) {
     const [content, setContent] = useState('');
@@ -27,7 +27,7 @@ function ReviewForm({ gameId, isLoggedIn, fetchReviews, closeForm, rating }) {
             }, {
                 withCredentials: true
             });
-            alert('Review added successfully!');
+            alert('리뷰가 등록되었습니다');
             setContent('');
             fetchReviews(); // Fetch reviews again to update the list
             closeForm(); // Close the form after submission
@@ -79,7 +79,6 @@ function GameDetailPage() {
     const [existingReview, setExistingReview] = useState(null);
     
     const userid = getUserId();
-    console.log(userid);
     
     const handleSetValue = (e) => {
         setSearchQuery(e.target.value);
@@ -102,29 +101,23 @@ function GameDetailPage() {
         }
     };
 
-    const fetchReviewsAndUpdate = async () => {
-        try {
-            const reviewResponse = await axios.get(`http://localhost:8080/reviews/list/${gameId}`);
-            setReviews(reviewResponse.data); // Update reviews state with new data
-        } catch (err) {
-            console.error('Failed to fetch reviews:', err);
-            setError('Failed to fetch reviews.');
-        }
-    };    
-
     const onRemove = async (id) => {
         try {
             await axios.delete(`http://localhost:8080/reviews/delete/${id}`, {
                 withCredentials: true
             });
-            alert('Review deleted successfully!');
+            alert('리뷰가 삭제되었습니다');
             setReviews(reviews.filter(review => review.id !== id));
             fetchReviews(); 
             window.location.reload();
-            
         } catch (error) {
-            console.error('Failed to delete review:', error);
-            alert('Failed to delete review');
+            console.log(error.response.data);
+            if (error.response.data === 'anonymousUser') {
+                alert('삭제 권한이 없습니다.');
+            } else {
+                console.error('Failed to delete review:', error);
+                alert('삭제 권한이 없습니다.');
+            }
         }
     };
 
@@ -137,36 +130,40 @@ function GameDetailPage() {
     const handleEditSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.put(`http://localhost:8080/reviews/update/${editingReviewId}`, {
+            await axios.patch(`http://localhost:8080/reviews/update/${existingReview.id}`, {
                 content: editedContent,
                 starPoint: editedRating
             }, {
                 withCredentials: true
             });
-            alert('Review updated successfully!');
+            alert('리뷰가 수정되었습니다');
             setEditingReviewId(null);
             fetchReviews(); // Fetch reviews again to update the list
+            window.location.reload();
         } catch (error) {
-            console.error('Failed to update review:', error);
-            alert('Failed to update review');
+            alert('수정 권한이 없습니다.');
         }
     };
 
     const handleUpdateReview = async () => {
         try {
-          await axios.put(`http://localhost:8080/reviews/update/${existingReview.id}`, {
-            content: existingReview.content,
-            starPoint: existingReview.starPoint,
-          }, {
-            withCredentials: true,
-          });
-          alert('Review updated successfully!');
-          fetchReviews(); // Fetch reviews again to update the list
+            console.log(existingReview.id);
+            await axios.patch(`http://localhost:8080/reviews/update/${existingReview.id}`, {
+                content: existingReview.content,
+                starPoint: existingReview.starPoint,
+            }, {
+                withCredentials: true,
+            });
+            alert('리뷰가 수정되었습니다.');
+            fetchReviews(); // Fetch reviews again to update the list
         } catch (error) {
-          console.error('Failed to update review:', error);
-          alert('Failed to update review');
+            alert('수정 권한이 없습니다.');
         }
-      };
+    };
+
+    const redirectToUserReviews = (userid) => {
+        navigate(`/user-reviews/${userid}`);
+    };
 
     useEffect(() => {
         const fetchGameDetails = async () => {
@@ -233,34 +230,7 @@ function GameDetailPage() {
                 <div className='review-area'>
                   <RatingBarChart reviews={reviews} />
                   {existingReview ? (
-                    <div className="existing-review">
-                        <StarRatings
-                            rating={existingReview.starPoint}
-                            starDimension="25px"
-                            starSpacing="2px"
-                            starRatedColor="gold"
-                            starEmptyColor="gray"
-                            readonly
-                        />
-                        <div className='review-ar'>
-                            <textarea 
-                                readOnly
-                                value={existingReview.content}
-                                onChange={(e) => {
-                                  setExistingReview((prevReview) => ({
-                                    ...prevReview,
-                                    content: e.target.value,
-                                  }));
-                                }}
-                                disabled={false} // or a separate state to enable/disable the textarea
-                                className="fix-text"
-                            />                      
-                            <div className='my-riv-btn'>
-                                <button onClick={handleUpdateReview}>수정</button>
-                                <button onClick={() => onRemove(existingReview.id)}>삭제</button>
-                            </div>
-                        </div>
-                    </div>
+                    <ReviewComponent existingReview={existingReview} fetchReviews={fetchReviews} onRemove={onRemove} />
                   ) : (
                     <div className="review-controls">
                       <StarRatings
@@ -322,7 +292,8 @@ function GameDetailPage() {
                                     <>
                                         <div className="review-info">
                                             <div className='left'>
-                                                <div className='review-userid'>{review.user.name}</div>님의 리뷰 &nbsp;
+                                                <div className='review-userid' onClick={() => redirectToUserReviews(review.user.id)}>
+                                                    {review.user.name}</div>님의 리뷰 &nbsp;
                                                 <StarRatings
                                                     rating={review.starPoint}
                                                     starDimension="15px"
